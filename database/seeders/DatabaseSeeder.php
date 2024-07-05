@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
         
         echo "Seeding completed in: " . number_format($executionTime, 2) . " seconds\n";
 
-       // Log::info("Database seeding completed in {$executionTime} seconds.");
+
 
     
     }
