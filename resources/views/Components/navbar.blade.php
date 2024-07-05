@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">MyMedium</a>
@@ -15,7 +17,7 @@
        
       </ul>
       <form class="d-flex me-auto search-form">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" name ="search" placeholder="Search" aria-label="Search" value="{{request('search')}}">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
 

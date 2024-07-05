@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Posts;
 use App\Http\Requests\StorePostsRequest;
 use App\Http\Requests\UpdatePostsRequest;
+use Illuminate\Support\Facades\Cache;
 
 class PostsController extends Controller
 {
@@ -13,8 +14,25 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $cacheKey = 'posts_page_' . request('page', 1) . '_search_' . request('search', '');
+
+        $posts = Cache::remember( $cacheKey, 60,function () {
+         return  Posts::with('user') 
+                        -> orderBy('publication_date', 'desc')
+                        ->filter(request(['search']))
+                        ->paginate(6)
+                        ->withQueryString();
+        });
+        return view('Components.layout', [
+           "posts" => $posts
+        ]);
     }
+ //"posts"=> Posts::orderBy('publication_date', 'desc')->filter(request(['search']))->paginate(6),
+            
+            
+            // 'posts' => Posts::where('publication_date', '<=', '2024-04-14')
+            //   ->orderBy('publication_date', 'desc')
+            //   ->paginate(5, ['*'], 'publication_dates'),
 
     /**
      * Show the form for creating a new resource.

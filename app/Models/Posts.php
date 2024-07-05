@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Posts extends Model
 {
     use HasFactory;
+    protected $casts = [
+        'publication_date' => 'datetime',
+    ];
+    
 
     public function getRouteKeyName(){
         return 'slug';
@@ -17,5 +21,23 @@ class Posts extends Model
     // Relationship to user model
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeFilter($query, array $filters){
+
+        if($filters['search'] ?? false){
+            $query -> where('title','like', '%' . request('search'). '%')
+                 ->orwhere('content', 'like', '%' . request('search') . '%');
+      
+        }
+      
+    }
+
+    // helper function to extract only first two sentence from the content
+    public function getExerptAttribute()
+    {
+        $content = $this->content;
+        $sentences = preg_split('/(?<=[.?!])\s+/', $content, -1, PREG_SPLIT_NO_EMPTY);
+        return implode(' ', array_slice($sentences,0,2));
     }
 }
