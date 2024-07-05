@@ -27,13 +27,6 @@ class PostsController extends Controller
            "posts" => $posts
         ]);
     }
- //"posts"=> Posts::orderBy('publication_date', 'desc')->filter(request(['search']))->paginate(6),
-            
-            
-            // 'posts' => Posts::where('publication_date', '<=', '2024-04-14')
-            //   ->orderBy('publication_date', 'desc')
-            //   ->paginate(5, ['*'], 'publication_dates'),
-
     /**
      * Show the form for creating a new resource.
      */
