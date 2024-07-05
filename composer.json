@@ -49,8 +49,13 @@
     },
     "extra": {
         "laravel": {
+            "providers": [
+                "MyMedium\\app\\Providers\\TimeDifferenceServiceProvider"
+            ],
             "dont-discover": []
         }
+            
+        
     },
     "config": {
         "optimize-autoloader": true,

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Services\TimeDifferenceService;
+use Carbon\Carbon;
 
 class Posts extends Model
 {
@@ -11,6 +13,7 @@ class Posts extends Model
     protected $casts = [
         'publication_date' => 'datetime',
     ];
+    protected $dates = ['publication_date'];
     
 
     public function getRouteKeyName(){
@@ -40,4 +43,13 @@ class Posts extends Model
         $sentences = preg_split('/(?<=[.?!])\s+/', $content, -1, PREG_SPLIT_NO_EMPTY);
         return implode(' ', array_slice($sentences,0,2));
     }
+
+    public function getTimeDifferenceAttribute()
+    {
+        $timeDifferenceService = app(TimeDifferenceService::class);
+
+        return $timeDifferenceService->getDifference($this->publication_date);
+    }
 }
+
+

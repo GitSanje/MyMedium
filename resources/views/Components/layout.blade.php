@@ -31,7 +31,7 @@
             </h1>
         @endif
 
-        <div class="flex flex-wrap">
+        <div class="flex ">
             <div class="w-full lg:w-2/3 ">
                 @unless (count($posts) == 0)
                     <div>

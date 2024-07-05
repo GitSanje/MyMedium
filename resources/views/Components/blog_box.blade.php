@@ -9,10 +9,18 @@
         </div>
         <p class="text-gray-700 mb-4">{{ Str::limit($post->content, 100, '...') }}</p>
         <div class="flex items-center justify-between">
-            <p class="text text-sm text-gray-600">{{ $post->publication_date->format('F j, Y') }}</p>
+            <p class="text text-sm text-gray-600">
+                {{-- {{ $post->publication_date->format('F j, Y') }} --}}
+                {{ $post->time_difference }}
+            
+            </p>
         </div>
     </div>
-    <div class="w-1/5 d-flex justify-center">
-        <img src="{{ $post->image ? $post->image : asset('/imgs/default.png') }}" alt="{{ $post->title }}" class="rounded-t-lg">
+    <div class="flex justify-center items-center p-3 ">
+        <div class="w-32 h-32 sm:w-32 sm:h-32 md:w-48 md:h-48 ">
+            <img src="{{ $post->image ? $post->image : asset('/imgs/default.png') }}" alt="{{ $post->title }}" class="rounded w-full h-full object-cover">
+        </div>
     </div>
+    
+    
 </div>
