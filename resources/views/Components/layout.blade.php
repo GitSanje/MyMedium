@@ -23,7 +23,7 @@
     <x-navbar />
 
     <!-- blogs boxes -->
-    <div class="container mx-auto py-8 px-1   ">
+    <div class="container mx-auto py-8 px-4">
         @if (request()->has('search') && !empty(request('search')))
             <h1 class="text-3xl font-semibold text-start px-1 lg:px-4 mb-2">
                 <span class="text-slate-500">Results for </span>
@@ -45,9 +45,30 @@
                     </div>
                 @endunless
             </div>
-            <div class="hidden lg:block lg:w-1/3 ">
-                Hello
+            <div class="hidden lg:block lg:w-1/3 mx-4">
+                @php
+                    $categories = ['Technology', 'Health', 'Travel', 'Food', 'Education', 'Finance', 'Entertainment', 'Sports', 'Lifestyle', 'Science'];
+                    $head1 = 'Categories';
+                    $tags = ['AI', 'Machine Learning', 'Web Development', 'Fitness', 'Recipes', 'Investing', 'Movies', 'Football', 'Fashion', 'Physics'];
+                    $taghead= "Tags";
+                @endphp
+
+               <x-buttonList :list="$categories" :heading="$head1"/>
+               <x-buttonList :list="$tags" :heading="$taghead"/>
+               <div class="recent">
+                <h4 class="text-xl font-semibold px-5 bg-white mt-2 py-2">
+                    Recently Read
+                </h4>
+                <div class="side-post">
+                    <x-side_post />
+                    <x-side_post />
+                    <x-side_post />
+                </div>
+               
+              
             </div>
+            </div>
+
         </div>
 
         <div class="d-flex justify-content-center mt-4">
