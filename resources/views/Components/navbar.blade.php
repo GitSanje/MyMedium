@@ -29,7 +29,7 @@
           <a class="nav-link" href="#"><i class="fa-solid fa-bell fa-lg"></i></a>
       </li>
       <li class="nav-item px-2">
-          <a class="nav-link" href="#"><i class="fas fa-user fa-lg"></i></a>
+          <a class="nav-link" href="/login_register"><i class="fas fa-user-plus fa-lg"></i></a>
       </li>
       
       </ul>
