@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         User::factory(30)->create();
         
         $startTime = microtime(true); // Start timing
-         Posts::factory(100)->create();
+        Posts::factory(100)->create();
 
         // $totalPosts = 200000;
         // $batchSize = 1000;
