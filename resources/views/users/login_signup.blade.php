@@ -54,6 +54,29 @@
         $active = 'bg-indigo-400 text-white';
         $button =
             'inline-block font-semibold text-black bg-gray-300 rounded h-10 w-32 flex items-center justify-center ';
+
+
+            $googleAuthUrl = route('google-auth');
+        $icons = <<<HTML
+<button type="button" class="{$social_icons}">
+
+    <i class="fab fa-facebook-f"></i>
+</button>
+<button type="button" class="{$social_icons}">
+    <a href="{$googleAuthUrl}">
+        <i class="fab fa-google"></i>
+    </a>
+    
+</button>
+<button type="button" class="{$social_icons}">
+    <i class="fab fa-twitter"></i>
+</button>
+<button type="button" class="{$social_icons}">
+    <i class="fa-brands fa-linkedin"></i>
+</button>
+HTML;
+
+
     @endphp
 
 
@@ -85,20 +108,7 @@
                         <div class="text-center mb-3">
                             <p class="text-lg font-semibold">Sign in with:</p>
                             <div class="social_accounts">
-                                <button type="button" class="{{ $social_icons }}">
-                                    <i class="fab fa-facebook-f"></i>
-                                </button>
-
-
-                                <button type="button" class="{{ $social_icons }}">
-                                    <i class="fab fa-google"></i>
-                                </button>
-                                <button type="button" class="{{ $social_icons }}">
-                                    <i class="fab fa-twitter"></i>
-                                </button>
-                                <button type="button" class="{{ $social_icons }}">
-                                    <i class="fab fa-github"></i>
-                                </button>
+                                {!! $icons !!}
                             </div>
                         </div>
                         <p class="text-center font-medium">or:</p>
@@ -148,18 +158,7 @@
                         @csrf
                         <div class="text-center mb-3">
                             <p class="text-lg font-semibold">Sign up with:</p>
-                            <button type="button" class="{{ $social_icons }}">
-                                <i class="fab fa-facebook-f"></i>
-                            </button>
-                            <button type="button" class="{{ $social_icons }}">
-                                <i class="fab fa-google"></i>
-                            </button>
-                            <button type="button" class="{{ $social_icons }}">
-                                <i class="fab fa-twitter"></i>
-                            </button>
-                            <button type="button" class="{{ $social_icons }}">
-                                <i class="fab fa-github"></i>
-                            </button>
+                            {!! $icons !!}
                         </div>
                         <p class="text-center font-medium">or:</p>
 
